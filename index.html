@@ -18,7 +18,64 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Spotify - Web Player: Music for everyone</title>
-    <link rel="icon" href="./asset/Spotify_Primary_Logo_RGB_Green.png" ; <body>
+    <link rel="icon" href="./asset/Spotify_Primary_Logo_RGB_Green.png">
+
+    <style>
+        /* Accessible defaults and subtle animations without relying on external CSS */
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+        /* Card appearance animation */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(16px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .cards-container .card { 
+            animation: fadeInUp 600ms ease both; 
+        }
+        .cards-container .card:nth-child(1) { animation-delay: 60ms; }
+        .cards-container .card:nth-child(2) { animation-delay: 120ms; }
+        .cards-container .card:nth-child(3) { animation-delay: 180ms; }
+        .cards-container .card:nth-child(4) { animation-delay: 240ms; }
+        .cards-container .card:nth-child(5) { animation-delay: 300ms; }
+
+        /* Hover lift on cards */
+        .card {
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+        .card:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* Player slide-up on load */
+        @keyframes slideUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        .music-player { animation: slideUp 420ms ease-out both; }
+
+        /* Responsive adjustments without assuming external CSS structure */
+        .sticky-nav { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(1.2) blur(6px); }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .sticky-nav-options .hide { display: none !important; }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            h2 { font-size: 1.1rem; }
+            .cards-container { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+            .card-img { width: 100%; height: auto; border-radius: 8px; }
+            .sticky-nav-options .nav-item:not(.dark-badge) { display: none; }
+        }
+
+        /* Small phones */
+        @media (max-width: 420px) {
+            .cards-container { grid-template-columns: 1fr; }
+        }
+    </style>
+    <body>
     <div class="main">
         <div class="sidebar">
 
@@ -35,7 +92,7 @@
             <div class="library">
                 <div class="options">
                     <div class="lib-option nav-option">
-                        <img src="./asset/library_icon.png" alt="library icon">
+                        <img src="./asset/library_icon.png" alt="Library" loading="lazy">
 
                         <a href="#"> Your Library</a>
                     </div>
@@ -67,8 +124,8 @@
         <div class="main-content">
             <div class="sticky-nav">
                 <div class="sticky-nav-icons">
-                    <img src="./asset/backward_icon.png">
-                    <img src="./asset/forward_icon.png" class="hide">
+                    <img src="./asset/backward_icon.png" alt="Back" loading="lazy">
+                    <img src="./asset/forward_icon.png" class="hide" alt="Forward" loading="lazy">
                 </div>
                 <div class="sticky-nav-options">
                     <button class="badge nav-item hide">Explore Premium</button>
@@ -81,7 +138,7 @@
             <h2> Recently Played</h2>
             <div class="cards-container">
                 <div class="card">
-                    <img src="./asset/card1img.jpeg" class="card-img">
+                    <img src="./asset/card1img.jpeg" class="card-img" alt="Playlist cover" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
@@ -90,27 +147,27 @@
             <h2> Trending now near you </h2>
             <div class="cards-container">
                 <div class="card">
-                    <img src="./asset/card2img.jpeg" class="card-img">
+                    <img src="./asset/card2img.jpeg" class="card-img" alt="Trending cover 1" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
                 <div class="card">
-                    <img src="./asset/card3img.jpeg" class="card-img">
+                    <img src="./asset/card3img.jpeg" class="card-img" alt="Trending cover 2" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
                 <div class="card">
-                    <img src="./asset/card4img.jpeg" class="card-img">
+                    <img src="./asset/card4img.jpeg" class="card-img" alt="Trending cover 3" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
                 <div class="card">
-                    <img src="./asset/card3img.jpeg" class="card-img">
+                    <img src="./asset/card3img.jpeg" class="card-img" alt="Trending cover 4" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
                 <div class="card">
-                    <img src="./asset/card4img.jpeg" class="card-img">
+                    <img src="./asset/card4img.jpeg" class="card-img" alt="Trending cover 5" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
@@ -118,17 +175,17 @@
             <h2> Featred Charts</h2>
             <div class="cards-container">
                 <div class="card">
-                    <img src="./asset/card5img.jpeg" class="card-img">
+                    <img src="./asset/card5img.jpeg" class="card-img" alt="Featured chart cover 1" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
                 <div class="card">
-                    <img src="./asset/card6img.jpeg" class="card-img">
+                    <img src="./asset/card6img.jpeg" class="card-img" alt="Featured chart cover 2" loading="lazy">
                     <p class="card-title">Top Songs-India</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
                 <div class="card">
-                    <img src="./asset/card1img.jpeg" class="card-img">
+                    <img src="./asset/card1img.jpeg" class="card-img" alt="Featured chart cover 3" loading="lazy">
                     <p class="card-title">Top 50-Global</p>
                     <p class="card-info">Your daily updates of the most played...</p>
                 </div>
@@ -152,11 +209,11 @@
 
             <div class="player">
                 <div class="player-control">
-                    <img src="./asset/player_icon1.png" class="player-control-icon">
-                    <img src="./asset/player_icon2.png" class="player-control-icon">
-                    <img src="./asset/player_icon3.png" class="player-control-icon" style="opacity: 1; height: 2rem;">
-                    <img src="./asset/player_icon4.png" class="player-control-icon">
-                    <img src="./asset/player_icon5.png" class="player-control-icon">
+                    <img src="./asset/player_icon1.png" class="player-control-icon" alt="Shuffle" loading="lazy">
+                    <img src="./asset/player_icon2.png" class="player-control-icon" alt="Previous" loading="lazy">
+                    <img src="./asset/player_icon3.png" class="player-control-icon" style="opacity: 1; height: 2rem;" alt="Play" loading="lazy">
+                    <img src="./asset/player_icon4.png" class="player-control-icon" alt="Next" loading="lazy">
+                    <img src="./asset/player_icon5.png" class="player-control-icon" alt="Repeat" loading="lazy">
                 </div>
                 <div class="playback-bar">
                     <span class="current-time"> 0:00 </span>
