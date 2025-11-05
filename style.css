@@ -151,6 +151,73 @@ a {
     display: none;
   }
 }
+
+/* Mobile phones */
+@media (max-width: 576px) {
+  body {
+    overflow: auto;
+  }
+  .main {
+    height: 100vh;
+    padding: 0.25rem;
+  }
+  /* Hide the sidebar on small screens for more space */
+  .sidebar {
+    display: none;
+  }
+  .main-content {
+    border-radius: 0;
+    padding: 0.5rem 0 6.5rem 0; /* leave room for fixed player */
+  }
+  .sticky-nav {
+    padding: 0.5rem 0 0.5rem 0;
+  }
+  .sticky-nav-options .nav-item:not(.dark-badge) {
+    display: none;
+  }
+  /* Cards become grid */
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 0 0.75rem;
+  }
+  .card {
+    width: auto;
+    margin: 0;
+  }
+  .card-img {
+    width: 100%;
+    height: auto;
+  }
+  h2 {
+    font-size: 1.05rem;
+    padding: 0 0.75rem;
+  }
+  /* Player refinements */
+  .music-player {
+    height: 88px;
+  }
+  .player-control-icon {
+    margin-right: 1rem;
+  }
+  .progress-bar {
+    width: 60%;
+  }
+  .bottom-controls {
+    gap: 1rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+  .progress-bar {
+    width: 52%;
+  }
+}
 .card {
   background-color: #232323;
   width: 150px;
